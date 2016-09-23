@@ -1,0 +1,21 @@
+<api>
+    <continue rvcontinue="20160518082655|720843549" continue="||"/>
+    <query>
+        <pages>
+            <page _idx="19651298" pageid="19651298" ns="0" title="Soup">
+                <revisions>
+                    <rev user="GreenC bot" timestamp="2016-09-11T20:51:28Z" comment="[[User:Green Cardamom/WaybackMedic 2|WaybackMedic 2]]"/>
+                    <rev user="Popo le Chien" timestamp="2016-07-02T17:03:45Z" comment="/* Cold */ +image"/>
+                    <rev user="Macrakis" timestamp="2016-07-01T03:58:34Z" comment="um, the quote explicitly indicates that soup is not an entree in this system"/>
+                    <rev user="Macrakis" timestamp="2016-07-01T03:56:08Z" comment="more on dried soups"/>
+                    <rev user="Northamerica1000" timestamp="2016-07-01T02:10:43Z" comment="/* Dried */ wf: [[cheese soup]]s"/>
+                    <rev user="Dr. British12" timestamp="2016-06-25T22:11:05Z" comment="/* History */"/>
+                    <rev user="Bagoto" timestamp="2016-06-09T13:46:24Z" comment="/* Dessert */"/>
+                    <rev user="Macrakis" timestamp="2016-05-24T15:15:19Z" comment="rv linkspam"/>
+                    <rev user="Raynklinger" timestamp="2016-05-24T10:05:58Z" comment="/* Traditional regional varieties */"/>
+                    <rev user="Raynklinger" timestamp="2016-05-24T09:56:01Z" comment="/* Traditional regional varieties */"/>
+                </revisions>
+            </page>
+        </pages>
+    </query>
+</api>
