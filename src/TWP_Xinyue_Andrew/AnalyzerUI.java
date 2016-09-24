@@ -1,3 +1,5 @@
+package TWP_Xinyue_Andrew;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +13,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 
 /**
@@ -22,6 +25,7 @@ public class AnalyzerUI extends Application{
 	private TextField outputField = new TextField();
 
 	private Button goButton = new Button("Go");
+//	public VBox vBox = new VBox(outputField);
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -31,7 +35,7 @@ public class AnalyzerUI extends Application{
 //		goButton = new Button("Search");
 		Label LabeName1 = new Label("Search Topic:");
 		HBox pageHBox = new HBox(LabeName1, inputField);
-		primaryStage.setTitle("Revision Information Analyzer");
+		primaryStage.setTitle("TWP_Xinyue_Andrew.Revision Information Analyzer");
 		VBox vbox = new VBox(pageHBox, goButton, outputField);
 		Scene scene = new Scene(vbox, 500, 500);
 		primaryStage.setScene(scene);
@@ -59,6 +63,10 @@ public class AnalyzerUI extends Application{
 
 		InputStream inputStream = factory.getStreamFromSesearchTopic(inputField.getText());
 		parser.setUpDocument(inputStream);
+
+		ArrayList<Revision> revisionList = parser.getRevisionList();
+		for(Revision revision: revisionList){
+		}
 
 	}
 

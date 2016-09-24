@@ -1,3 +1,5 @@
+package TWP_Xinyue_Andrew;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -8,11 +10,15 @@ import java.net.URL;
  */
 public class URLFactory {
 
+	//	public static int UrlUserNumber = 10;
+	public static String UrlUserNumber = "10";
+
+
 	protected static boolean allowUserInteraction;
 
 	private static String UrlFirstPart1 = "https://en.wikipedia.org/w/api.php?action=query&format=xml&prop=revisions&titles=";
 	private static String UrlFirstPart2 = "&rvprop=timestamp|comment|user&rvlimit=";
-	private static String UrlUserNumber = "10";
+//	private static String UrlUserNumber = "10";
 
 	public static InputStream getStreamFromSesearchTopic(String SesearchTopicName) throws IOException {
 

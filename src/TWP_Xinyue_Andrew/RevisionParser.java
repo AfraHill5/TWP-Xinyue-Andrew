@@ -1,3 +1,5 @@
+package TWP_Xinyue_Andrew;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -8,6 +10,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
+import static TWP_Xinyue_Andrew.URLFactory.UrlUserNumber;
 
 /**
  * Created by Administrator on 2016/9/22 0022.
@@ -29,10 +34,6 @@ public class RevisionParser {
 		NodeList children = document.getElementsByTagName("rev");
 		Element element = (Element) children.item(index);
 		return element.getAttribute(attribute);
-
-//		NodeList AutherNames = document.getElementsByTagName("user");
-//		NodeList RevisionTimes = document.getElementsByTagName("timestamp");
-//		NodeList Revisioncomment = document.getElementsByTagName("comment");
 	}
 
 	public Revision setRevision(int index){
@@ -42,5 +43,23 @@ public class RevisionParser {
 		Revision revision = new Revision();
 		revision.setUpRevision(AuthorName, RevisionTime, RevisionComment);
 		return revision;
+	}
+
+	public ArrayList<Revision> setRevisionList(NodeList revision){
+		ArrayList<Revision> revisionList = new ArrayList<Revision>();
+		for(int i=0;i< Integer.parseInt(UrlUserNumber);i++) {
+			Element revisionElement = (Element) revision.item(i);
+			Revision revisionItem = new Revision();
+			revisionItem = revisionItem.setUpRevision(revisionElement.getAttribute("user"),
+					revisionElement.getAttribute("timeStamp"),
+					revisionElement.getAttribute("comment"));
+			revisionList.add(revisionItem);
+		}
+		return revisionList;
+	}
+
+	public ArrayList<Revision> getRevisionList(){
+		NodeList children = document.getElementsByTagName("rev");
+		return setRevisionList(children);
 	}
 }

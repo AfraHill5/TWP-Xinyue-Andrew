@@ -1,3 +1,5 @@
+package TWP_Xinyue_Andrew;
+
 /**
  * Created by Administrator on 2016/9/22 0022.
  */
@@ -19,8 +21,11 @@ public class Revision {
 		this.timeStamp = timeStamp;
 		this.comment = comment;
 		return this;
-
-
 	}
+
+//	public Revision getRevision(){
+//
+//	}
+
 
 }
