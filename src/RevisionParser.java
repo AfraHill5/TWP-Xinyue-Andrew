@@ -35,9 +35,12 @@ public class RevisionParser {
 //		NodeList Revisioncomment = document.getElementsByTagName("comment");
 	}
 
-//	public Revison setRevision(int index){
-//		String AutherNames = getRevisionNode(index, "user");
-//		String RevisionTimes = getRevisionNode(index, "timestamp");
-//		String Revisioncomment = getRevisionNode(index, "comment");
-//	}
+	public Revision setRevision(int index){
+		String AuthorName = getRevisionNode(index, "user");
+		String RevisionTime = getRevisionNode(index, "timestamp");
+		String RevisionComment = getRevisionNode(index, "comment");
+		Revision revision = new Revision();
+		revision.setUpRevision(AuthorName, RevisionTime, RevisionComment);
+		return revision;
+	}
 }
