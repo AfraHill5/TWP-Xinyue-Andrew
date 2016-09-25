@@ -29,21 +29,21 @@ public class RevisionParser {
 
 	}
 
-	public String getRevisionNode(int index, String attribute){
-
-		NodeList children = document.getElementsByTagName("rev");
-		Element element = (Element) children.item(index);
-		return element.getAttribute(attribute);
-	}
-
-	public Revision setRevision(int index){
-		String AuthorName = getRevisionNode(index, "user");
-		String RevisionTime = getRevisionNode(index, "timestamp");
-		String RevisionComment = getRevisionNode(index, "comment");
-		Revision revision = new Revision();
-		revision.setUpRevision(AuthorName, RevisionTime, RevisionComment);
-		return revision;
-	}
+//	public String getRevisionNode(int index, String attribute){
+//
+//		NodeList children = document.getElementsByTagName("rev");
+//		Element element = (Element) children.item(index);
+//		return element.getAttribute(attribute);
+//	}
+//
+//	public Revision setRevision(int index){
+//		String AuthorName = getRevisionNode(index, "user");
+//		String RevisionTime = getRevisionNode(index, "timestamp");
+//		String RevisionComment = getRevisionNode(index, "comment");
+//		Revision revision = new Revision();
+//		revision.setUpRevision(AuthorName, RevisionTime, RevisionComment);
+//		return revision;
+//	}
 
 	public ArrayList<Revision> setRevisionList(NodeList revision){
 		ArrayList<Revision> revisionList = new ArrayList<Revision>();

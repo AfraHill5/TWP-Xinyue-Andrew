@@ -25,7 +25,10 @@ public class AnalyzerUI extends Application{
 	private TextField outputField = new TextField();
 
 	private Button goButton = new Button("Go");
-//	public VBox vBox = new VBox(outputField);
+	public VBox viewOutput;
+
+	private VBox pageRevisionsOutput;
+
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -36,14 +39,20 @@ public class AnalyzerUI extends Application{
 		Label LabeName1 = new Label("Search Topic:");
 		HBox pageHBox = new HBox(LabeName1, inputField);
 		primaryStage.setTitle("TWP_Xinyue_Andrew.Revision Information Analyzer");
-		VBox vbox = new VBox(pageHBox, goButton, outputField);
-		Scene scene = new Scene(vbox, 500, 500);
+//		VBox vbox = new VBox(pageHBox, goButton, outputField);
+
+		pageRevisionsOutput = new VBox();
+		viewOutput = new VBox(pageHBox, goButton, pageRevisionsOutput);
+		Scene scene = new Scene(viewOutput, 500, 500);
+
+//		Scene scene = new Scene(vbox, 500, 500);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 //		outputField();
 		goButton.setOnAction(event -> {
 			try {
 				getRevision();
+				showUserRevisionsOutput();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ParserConfigurationException e) {
@@ -66,8 +75,21 @@ public class AnalyzerUI extends Application{
 
 		ArrayList<Revision> revisionList = parser.getRevisionList();
 		for(Revision revision: revisionList){
+			RevisionView revisionView = new RevisionView(revision);
+			viewOutput.getChildren().add(revisionView);
 		}
+	}
 
+	private void showUserRevisionsOutput() {
+		Button exitButton = new Button("OK");
+		VBox vBox = new VBox(viewOutput, exitButton);
+		Scene scene = new Scene(vBox);
+		Stage stage = new Stage();
+		stage.setScene(scene);
+		stage.show();
+		exitButton.setOnAction(event -> {
+			stage.close();
+		});
 	}
 
 
