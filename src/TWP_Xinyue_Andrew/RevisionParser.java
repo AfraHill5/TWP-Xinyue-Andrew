@@ -21,45 +21,47 @@ public class RevisionParser {
 	private Document document;
 
 	public void setUpDocument(InputStream inputStream ) throws ParserConfigurationException, IOException, SAXException {
-
-//		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(xml);
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		document = builder.parse(inputStream);
-
 	}
 
-//	public String getRevisionNode(int index, String attribute){
-//
-//		NodeList children = document.getElementsByTagName("rev");
-//		Element element = (Element) children.item(index);
-//		return element.getAttribute(attribute);
-//	}
-//
-//	public Revision setRevision(int index){
-//		String AuthorName = getRevisionNode(index, "user");
-//		String RevisionTime = getRevisionNode(index, "timestamp");
-//		String RevisionComment = getRevisionNode(index, "comment");
-//		Revision revision = new Revision();
-//		revision.setUpRevision(AuthorName, RevisionTime, RevisionComment);
-//		return revision;
-//	}
+	public ArrayList<Revision> getRevisionTopicList(){
+		NodeList children = document.getElementsByTagName("rev");
+		return setRevisionTopicList(children);
+	}
 
-	public ArrayList<Revision> setRevisionList(NodeList revision){
-		ArrayList<Revision> revisionList = new ArrayList<Revision>();
+	public ArrayList<Revision> getRevisionUserList(String userName){
+		NodeList children = document.getElementsByTagName("rev");
+		return setRevisionUserList(children, userName);
+	}
+
+	public ArrayList<Revision> setRevisionTopicList(NodeList revision){
+		ArrayList<Revision> revisionTopicList = new ArrayList<Revision>();
 		for(int i=0;i< Integer.parseInt(UrlUserNumber);i++) {
 			Element revisionElement = (Element) revision.item(i);
 			Revision revisionItem = new Revision();
 			revisionItem = revisionItem.setUpRevision(revisionElement.getAttribute("user"),
-					revisionElement.getAttribute("timeStamp"),
+					revisionElement.getAttribute("timestamp"),
 					revisionElement.getAttribute("comment"));
-			revisionList.add(revisionItem);
+			revisionTopicList.add(revisionItem);
 		}
-		return revisionList;
+		return revisionTopicList;
 	}
 
-	public ArrayList<Revision> getRevisionList(){
-		NodeList children = document.getElementsByTagName("rev");
-		return setRevisionList(children);
+	public ArrayList<Revision> setRevisionUserList(NodeList revision, String userName){
+		ArrayList<Revision> revisionUserList = new ArrayList<Revision>();
+		for(int i=0;i< Integer.parseInt(UrlUserNumber);i++) {
+			Element revisionElement = (Element) revision.item(i);
+			if(revisionElement.getAttribute("user").equalsIgnoreCase(userName)){
+				Revision revisionItem = new Revision();
+				revisionItem = revisionItem.setUpRevision(revisionElement.getAttribute("user"),
+						revisionElement.getAttribute("timestamp"),
+						revisionElement.getAttribute("comment"));
+				revisionUserList.add(revisionItem);
+			}
+		}
+		return revisionUserList;
 	}
+
 }

@@ -23,9 +23,4 @@ public class Revision {
 		return this;
 	}
 
-//	public Revision getRevision(){
-//
-//	}
-
-
 }
